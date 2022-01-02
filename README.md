@@ -38,4 +38,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Kaafochino - [@kaafochino](https://twitter.com/kaafochino) - pazoki.karim72@gmail.com
+Karim Pazoki - [@kaafochino](https://twitter.com/kaafochino) - pazoki.karim72@gmail.com
