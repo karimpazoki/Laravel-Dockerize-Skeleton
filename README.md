@@ -23,7 +23,7 @@ This simple skeleton deployed to simply dockerize any laravel project on nginx a
 
 1. clone the repository.
 1. Install docker and docker-compose.
-2. Copy your all laravel files and directories in application directory.
+2. Copy all of your laravel files and directories in application directory.
 3. Run `install.sh`.
 4. Run `docker-compose up -d`.
 5. Open `localhost:8080` and enjoy :).
