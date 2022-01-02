@@ -1,0 +1,62 @@
+version: '3.6'
+services:
+  app:
+    container_name: app_container
+    build:
+      context: ./config
+      dockerfile: app.dockerfile
+      args:
+        - PHP_VERSION=${PHP_VERSION:?err}
+        - COMPOSER_VERSION=${COMPOSER_VERSION:?err}
+    volumes:
+      - ./application:/var/www
+    working_dir: /var/www
+    environment:
+      - DB_CONNECTION=${DB_CONNECTION:-mysql}
+      - DB_HOST=${DB_HOST:-mysql}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_DATABASE=${DB_NAME:?err}
+      - DB_USERNAME=${DB_USER:?err}
+      - DB_PASSWORD=${DB_PASSWORD:?err}
+    networks:
+      - app-network
+    restart: always
+  nginx:
+    container_name: nginx_container
+    build:
+      context: ./config
+      dockerfile: nginx.dockerfile
+      args:
+        - NGINX_VERSION=${NGINX_VERSION:?err}
+    hostname: nginx_container
+    working_dir: /var/www
+    volumes:
+      - ./application:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - app
+    restart: always
+    ports:
+      - "8080:8080"
+  mysql:
+    container_name: mysql_container
+    image: mysql:${MYSQL_VERSION:?err}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=${DB_NAME:?err}"
+      - "MYSQL_USER=${DB_USER:?err}"
+      - "MYSQL_PASSWORD=${DB_PASSWORD:?err}"
+      - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD:?err}"
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    restart: always
+volumes:
+  mysql_data:
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
