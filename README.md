@@ -27,7 +27,7 @@ This simple skeleton deployed to simply dockerize any laravel project on nginx a
 4. Copy `.env.example` to `.env` and initial variables.
 5. Edit `php.ini` if you need.
 6. Run `install.sh`.
-7. Run `docker-compose up -d`.
+7. Run `docker-compose up -d --build`.
 8. Open `localhost:8080` and enjoy :).
 
 <!-- LICENSE -->
