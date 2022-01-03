@@ -5,7 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">Laravel-Doockerize-Skeleton</h3>
+  <h3 align="center">Laravel-Dockerize-Skeleton</h3>
 
   <p align="center">
     A simple skeleton to dockerize your laravel app.
